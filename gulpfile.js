@@ -58,7 +58,7 @@ const gulpIf = require("gulp-if");
 const htmlmin = require("gulp-htmlmin");
 const isProd = process.env.NODE_ENV === "prod";
 const fs = require("fs");
-const browserSync = require("browser-sync").create();
+const browserSync = require("browser-sync").create( {open: false});
 const reload = browserSync.reload;
 // Browser definitions for autoprefixer
 var AUTOPREFIXER_BROWSERS = [
