@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--meta(name='viewport', content='width=device-width, initial-scale=1')-->
+    <title>My Site - My awesome title</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" type="text/css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet" href="assets/vendor/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen">
+    <link rel="stylesheet" href="assets/css/main.min.css">
+    <link rel="stylesheet" href="/css/custom.min.css">
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/slick-carousel/slick/slick.min.js"></script>
+    <script src="assets/vendor/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script src="/js/main.min.js"></script>
+    <script src="/js/custom.min.js"></script>
+  </head>
+  <body data-spy="scroll" data-target="#navbar-example"><!--[if lte IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+      Please <a target="_blank" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p><!--<![endif]-->
+    <nav id="navbar-example" class="navbar navbar-default navbar-fixed-top b-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav nav-justified">
+            <li class="active"><a href="#top">Главная</a></li>
+            <li><a href="#features">Что такое тендер</a></li>
+            <li><a href="#advantages">Преимущества</a></li>
+            <li><a href="#feedback_medium">Узнать объем торгов</a></li>
+            <li><a href="#catalog">Тарифы</a></li>
+            <li><a href="#services">Разовые услуги</a></li>
+            <li><a href="#steps">Как мы работаем</a></li>
+            <li><a href="#team">Наша команда</a></li>
+            <li><a href="#map">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="top"></div>
+    <div class="b-jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="clearfix"><a href="#" class="b-jumbotron__logo pull-left"><img src="assets/img/logo.png" alt=""></a>
+              <div class="b-jumbotron__lead pull-left">Тендерное<br>сопровождение<br>под ключ</div>
+            </div>
+            <p class="b-jumbotron__title">Свой тендерный<br>отдел всего</p>
+            <p class="b-jumbotron__description">за <span class="b-jumbotron__price">12 000</span> рублей/в месяц<br>(участие в торгах по 44-ФЗ и 223-ФЗ)</p><a href="#modal_form" class="btn btn-default btn-lg b-jumbotron__button fancybox">Консультация специалиста</a>
+          </div>
+          <div class="col-xs-6">
+            <div class="text-right"><span class="b-jumbotron__phone">8 (343) 987-65-43</span><br><a href="#modal_form" class="b-jumbotron__callback fancybox">Заказать консультацию</a>
+              <div class="b-jumbotron-name"><span class="b-jumbotron-name__name">Крохалев Сергей</span><br><span class="b-jumbotron-name__description">Руководитель направления</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="features" class="b-features">
+      <div class="b-features__bg"></div>
+      <div class="container">
+        <h2 class="b-features__header">Что такое <b>тендерное</b> сопровождение?</h2>
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-6">
+            <ul class="b-features__list">
+              <li class="b-features__item">Прохождение аккредитации на 5 федеральных торговых площадках</li>
+              <li class="b-features__item">Подбор закупок по видам деятельности</li>
+              <li class="b-features__item">Анализ заказчиков и закупочных процедур</li>
+              <li class="b-features__item">Подготовка и подача заявок</li>
+              <li class="b-features__item">Участие в аукционах</li>
+              <li class="b-features__item">Подписание контракта</li>
+              <li class="b-features__item">Подача запросов на разъяснение аукционной документации (при необходимости)</li>
+              <li class="b-features__item">Подача протоколов разногласий к контракту (при необходимости)</li>
+              <li class="b-features__item">Составление жалоб ФАС (при необходимости)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-feedback-mini">
+      <div class="container">
+        <h2 class="b-feedback-mini__title">Оставьте заявку</h2>
+        <p class="b-feedback-mini__description">Получите <b>бесплатную</b> консультацию тендерного специалиста</p>
+        <form class="b-feedback-mini__form">
+          <div class="form-group">
+            <label class="sr-only">Введите номер телефона:</label>
+            <div class="input-group input-group-lg">
+              <input type="text" placeholder="+7 (___) ___-__-__" class="form-control"><span class="input-group-btn">
+                <button type="submit" class="btn btn-success b-feedback-mini__button">Жду звонка</button></span>
+            </div>
+          </div>
+        </form><span class="help-block b-feedback-mini__hint">Мы перезвоним вам в ближайшее время и ответим на все ваши вопросы.<br>Ваши контактные данные не будут переданны третьим лицам.</span>
+      </div>
+    </div>
+    <div id="advantages" class="b-advantages">
+      <div class="container">
+        <h2 class="b-advantages__header"><b>Преимущества</b> работы с нами</h2>
+        <div class="b-advantages__list">
+          <div class="b-advantages__item">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_1"></div>
+            </div>
+            <p class="b-advantages__title">Высокий процент выигранных тендеров</p>
+          </div>
+          <div class="b-advantages__item">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_2"></div>
+            </div>
+            <p class="b-advantages__title">Сотрудничать с нами выгодней, чем нанимать сотрудника в штат</p>
+          </div>
+          <div class="b-advantages__item">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_3"></div>
+            </div>
+            <p class="b-advantages__title">Команда профессионалов работает на вас</p>
+          </div>
+          <div class="b-advantages__item">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_4"></div>
+            </div>
+            <p class="b-advantages__title">Защита ваших интересов в ФАС</p>
+          </div>
+          <div class="b-advantages__item b-advantages__item_padding_5">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_5"></div>
+            </div>
+            <p class="b-advantages__title">Быстрая подготовка заявок и увеличение результативности участия</p>
+          </div>
+          <div class="b-advantages__item">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_6"></div>
+            </div>
+            <p class="b-advantages__title">Экономия на создании или расширении собственного отдела</p>
+          </div>
+          <div class="b-advantages__item b-advantages__item_padding_0">
+            <div class="b-advantages__icon">
+              <div class="b-advantages__image b-advantages__image_7"></div>
+            </div>
+            <p class="b-advantages__title">Отсутствие необходимости разбираться в документах и изменениях законодательства</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="feedback_medium" class="b-feedback-medium">
+      <div class="container">
+        <h2 class="b-feedback-medium__title">Узнайте объем торгов в вашей отрасли<br><b>совершено бесплатно</b></h2>
+        <div class="row">
+          <div class="col-xs-6">
+            <p class="b-feedback-medium__check">Количество тендеров в вашей отрасли</p>
+          </div>
+          <div class="col-xs-6">
+            <p class="b-feedback-medium__check">Результаты выигрыша прошлых тендеров</p>
+          </div>
+        </div>
+        <div class="b-feedback-medium__form">
+          <form>
+            <p class="b-feedback-medium__lead">Оставьте заявку на бесплатный аудит вашей<br>отрасли и узнайте стоит ли вам участвовать в тендерах</p>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="sr-only">Ваше имя</label>
+                  <input type="text" placeholder="Ваше имя" class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label class="sr-only">Ваш номер телефона</label>
+                  <input type="text" placeholder="+7 (___) ___-__-__" class="form-control">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg b-feedback-medium__button">Получить бесплатный аудит</button><span class="help-block b-feedback-medium__hint">Наш специалист свяжется с Вами для уточнения суммы и срока контракта</span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="catalog" class="b-catalog">
+      <div class="container">
+        <h2 class="b-catalog__header"><b>Тарифы</b> на тендерное сопровождение</h2>
+        <div class="b-catalog__list">
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="b-catalog__item b-catalog__item_1">
+                <p class="b-catalog__title">Пробный</p>
+                <ul class="b-catalog__features">
+                  <li class="b-catalog__feature">Помощь в получение ЭЦП</li>
+                  <li class="b-catalog__feature">Аккредитация на 5 площадках</li>
+                  <li class="b-catalog__feature">Подготовка и подача 3 заявок + 1% от выигрыша</li>
+                </ul>
+                <p class="b-catalog__price"><b>6 000</b> рублей</p><a href="#modal_form" class="btn b-catalog__button fancybox">Консультация по тарифу</a>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="b-catalog__item b-catalog__item_2">
+                <p class="b-catalog__title">Базовый</p>
+                <ul class="b-catalog__features">
+                  <li class="b-catalog__feature">Помощь в получение ЭЦП</li>
+                  <li class="b-catalog__feature">Аккредитация на 5 площадках</li>
+                  <li class="b-catalog__feature">Подготовка и подача 10 заявок + 1% от выигрыша</li>
+                </ul>
+                <p class="b-catalog__price"><b>12 000</b> рублей</p><a href="#modal_form" class="btn b-catalog__button fancybox">Консультация по тарифу</a>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="b-catalog__item b-catalog__item_3">
+                <p class="b-catalog__title">Безлимит</p>
+                <ul class="b-catalog__features">
+                  <li class="b-catalog__feature">Помощь в получение ЭЦП</li>
+                  <li class="b-catalog__feature">Аккредитация на 5 площадках</li>
+                  <li class="b-catalog__feature">Подготовка и подача неограниченого числа заявок +1% от выигрыша</li>
+                </ul>
+                <p class="b-catalog__price"><b>25 000</b> рублей</p><a href="#modal_form" class="btn b-catalog__button fancybox">Консультация по тарифу</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="services" class="b-services">
+      <div class="container">
+        <h2 class="b-services__header"><b>Разовые</b> услуги</h2>
+        <div class="b-services__list">
+          <div class="row">
+            <div class="col-xs-3">
+              <div class="b-services__item">
+                <p class="b-services__title">Подготовка<br>ЭЦП</p>
+                <p class="b-services__price"><b>6 000</b> рублей</p>
+                <p class="b-services__comment">(срок 1 рабочий день)</p><a href="#modal_form" class="btn b-services__button fancybox">Заказать</a>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="b-services__item">
+                <p class="b-services__title">Аккредитация<br>на 5 федеральных<br>торговых площадках</p>
+                <p class="b-services__price"><b>5 000</b> рублей</p>
+                <p class="b-services__comment">(срок 1 рабочий день)</p><a href="#modal_form" class="btn b-services__button fancybox">Заказать</a>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="b-services__item">
+                <p class="b-services__title">Подготовка<br>заявки</p>
+                <p class="b-services__price">от <b>2 000</b> рублей</p>
+                <p class="b-services__comment">(срок - от 1 дня в зависимо-<br>сти от объёмов и сложности<br>технического задания)</p><a href="#modal_form" class="btn b-services__button fancybox">Заказать</a>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="b-services__item">
+                <p class="b-services__title">Подготовка<br>жалобы в ФАС</p>
+                <p class="b-services__price"><b>3 000</b> рублей</p>
+                <p class="b-services__comment"></p><a href="#modal_form" class="btn b-services__button fancybox">Заказать</a>
+              </div>
+            </div>
+          </div>
+        </div><a href="#modal_form" class="btn b-services__cta fancybox">Консультация по тарифу</a>
+      </div>
+    </div>
+    <div id="steps" class="b-steps">
+      <div class="container">
+        <h2 class="b-steps__header">Как мы работаем <b>6 шагов</b> до победы</h2>
+        <div class="b-steps__list">
+          <div class="b-steps__item b-steps__item_1">Начало работы (выпуск ЭЦП и аккредитация на площадках</div>
+          <div class="b-steps__item b-steps__item_2">Мониторинг тендеров</div>
+          <div class="b-steps__item b-steps__item_3">Подбор тендеров</div>
+          <div class="b-steps__item b-steps__item_4">Подготовка<br>и подача заявки</div>
+          <div class="b-steps__item b-steps__item_5">Участие, выигрыш</div>
+          <div class="b-steps__item b-steps__item_6">Подписание<br>договора</div>
+        </div><a href="#modal_form" class="btn b-steps__button fancybox">Получить консультацию</a>
+      </div>
+    </div>
+    <div id="team" class="b-team">
+      <div class="container">
+        <h2 class="b-team__header">Наша команда</h2>
+        <div class="b-team__list">
+          <div class="b-team__item"><img src="assets/img/team/1.png" class="b-team__image">
+            <p class="b-team__name">Крохалев Сергей</p>
+            <p class="b-team__post">Руководитель направления</p>
+            <div class="b-team__text">
+              <p>Любые учреждения, компании, организации нуждается в руководителях, то есть, в людях, которые будут управлять производственным процессом, организовывать работу персонала, принимать решения и брать на себя ответственность.</p>
+            </div>
+          </div>
+          <div class="b-team__item"><img src="assets/img/team/2.png" class="b-team__image">
+            <p class="b-team__name">Мария Гусева</p>
+            <p class="b-team__post">Руководитель направления</p>
+            <div class="b-team__text">
+              <p>Любые учреждения, компании, организации нуждается в руководителях, то есть, в людях, которые будут управлять производственным процессом, организовывать работу персонала, принимать решения и брать на себя ответственность.</p>
+            </div>
+          </div>
+          <div class="b-team__item"><img src="assets/img/team/3.png" class="b-team__image">
+            <p class="b-team__name">Крохалев Сергей</p>
+            <p class="b-team__post">Руководитель направления</p>
+            <div class="b-team__text">
+              <p>Любые учреждения, компании, организации нуждается в руководителях, то есть, в людях, которые будут управлять производственным процессом, организовывать работу персонала, принимать решения и брать на себя ответственность.</p>
+            </div>
+          </div>
+          <div class="b-team__item"><img src="assets/img/team/4.png" class="b-team__image">
+            <p class="b-team__name">Крохалев Сергей</p>
+            <p class="b-team__post">Руководитель направления</p>
+            <div class="b-team__text">
+              <p>Любые учреждения, компании, организации нуждается в руководителях, то есть, в людях, которые будут управлять производственным процессом, организовывать работу персонала, принимать решения и брать на себя ответственность.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-map">
+      <div id="map"></div>
+      <script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?load=package.full&amp;lang=ru-RU"></script>
+      <script type="text/javascript">
+        var myMap;
+        
+        ymaps.ready(function () {
+            myMap = new ymaps.Map("map", {
+                center: [56.831385, 60.724580],
+                zoom: 12
+            });
+        
+            // Создание экземпляра элемента управления
+            myMap.controls.add(new ymaps.control.ZoomControl());
+            myMap.controls.add(new ymaps.control.ScaleLine());
+            //myMap.behaviors.disable(['drag', 'rightMouseButtonMagnifier']);
+        
+        
+            // Создаем метку с изображением коалы
+            myPlacemark = new ymaps.Placemark([56.831385, 60.724580], {
+                // Контент балуна
+                balloonContent: "<p class='b-map__phone'>+7 912 678 90 12</p><p class='b-map__text'>620000 г. Екатеринбург,<br>Июльская, д 8, офис 343 <br><a href='mailto:mail@mail.ru'>mail@mail.ru</a></p>"
+            }, {
+                balloonContentSize: [358 - 66 * 2, 259 - 47 * 2],
+                // Задаем макет балуна - пользовательская картинка с контентом
+                balloonLayout: "default#imageWithContent",
+                // Картинка балуна
+                balloonImageHref: 'assets/img/balloon-bg.png',
+                // Смещение картинки балуна
+                balloonImageOffset: [0, -127],
+                // Размеры картинки балуна
+                balloonImageSize: [358, 259],
+                balloonContentOffset: [66, 47],
+                // Балун не имеет тени
+                balloonShadow: false,
+                closeButton: false
+            });
+        
+            // Добавляем метку на карту
+            myMap.geoObjects.add(myPlacemark);
+        
+            myPlacemark.balloon.open();
+        });
+        
+      </script>
+    </div>
+    <div class="hidden">
+      <div id="modal_form" class="b-modal-form">
+        <div class="b-modal-form__header">
+          <p class="b-modal-form__title">Оставьте заявку на бесплатный аудит вашей отрасли и узнайте стоит ли вам участвовать в тендерах</p>
+        </div>
+        <form>
+          <div class="b-modal-form__form">
+            <div class="form-group">
+              <label class="sr-only">Ваше имя*</label>
+              <input placeholder="Ваше имя*" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="sr-only">Ваш номер телефона*</label>
+              <input placeholder="Ваш номер телефона*" class="form-control">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success btn-lg btn-block b-modal-form__button">Получить бесплатный аудит</button><span class="b-modal-form__hint">Наш специалист свяжется с Вами для уточнения суммы и срока контракта</span>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
