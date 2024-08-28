@@ -133,11 +133,11 @@ gulp.task(
 );
 // start the server
 gulp.task("webserver", function () {
-  webserver.init({
+  browsersync.init({
     // ... other options
     open: false
 });
-  webserver(serverConfig);
+  browsersync(serverConfig);
 });
 
 //build partial html files
@@ -187,7 +187,7 @@ gulp.task("css:build", function () {
       //.pipe(postcss([autoprefixer()]))
       .pipe(sourcemaps.write("./")) // write sourcemap
       .pipe(gulp.dest(paths.build.css)) // output to build
-      .pipe(webserver.reload({ stream: true }))
+      .pipe(browsersync.reload({ stream: true }))
   ); // server restart
 });
 // compile js
@@ -203,7 +203,7 @@ gulp.task("js:build", function () {
       .pipe(uglify()) // minimize js
       .pipe(sourcemaps.write("./")) //  write sourcemap
       .pipe(gulp.dest(paths.build.js)) // put ready file
-      .pipe(webserver.reload({ stream: true }))
+      .pipe(browsersync.reload({ stream: true }))
   ); // server restart
 });
 
