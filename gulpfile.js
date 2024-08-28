@@ -133,11 +133,12 @@ gulp.task(
 );
 // start the server
 gulp.task("webserver", function () {
-  browsersync.init({
+  /*browsersync.init({
     // ... other options
     open: false
 });
   browsersync(serverConfig);
+  */
 });
 
 //build partial html files
