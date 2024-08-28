@@ -133,6 +133,10 @@ gulp.task(
 );
 // start the server
 gulp.task("webserver", function () {
+  webserver.init({
+    // ... other options
+    open: false
+});
   webserver(serverConfig);
 });
 
@@ -294,6 +298,10 @@ gulp.task("watch", function () {
     gulp.src('./build/*.html')
         .pipe(open(url + '/<%=file.paths.replace(file.base,"")%>', {app: 'chrome'}));
   });*/
+  browsersync.init({
+    // ... other options
+    open: false
+});
   gulp.watch(paths.watch.part, gulp.series("part:build"));
   gulp.watch(paths.watch.html, gulp.series("html:build"));
   gulp.watch(paths.watch.css, gulp.series("css:build"));
