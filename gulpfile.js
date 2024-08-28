@@ -34,7 +34,7 @@ const paths = {
 var postcss = require("gulp-postcss");
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
-const webserver = require("browser-sync"); // server for work and automatic page updates
+const webserver = require("browser-sync") // server for work and automatic page updates
 const plumber = require("gulp-plumber"); // bug tracking module
 //rigger = require("gulp-rigger"), // a module to import the contents of one file into another
 const concat = require("gulp-concat");
@@ -58,7 +58,7 @@ const gulpIf = require("gulp-if");
 const htmlmin = require("gulp-htmlmin");
 const isProd = process.env.NODE_ENV === "prod";
 const fs = require("fs");
-const browserSync = require("browser-sync").create( {open: false});
+const browserSync = require("browser-sync").create( );
 const reload = browserSync.reload;
 // Browser definitions for autoprefixer
 var AUTOPREFIXER_BROWSERS = [
@@ -85,6 +85,7 @@ var serverConfig = {
     baseDir: "./build",
   },
   notify: false,
+  open:false
 };
 
 const htmlFile = ["resources/src/*.html"];
