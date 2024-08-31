@@ -1,40 +1,43 @@
 "use strict";
 const paths = {
-	build: {
-	  html: "./build/",
-	  js: "./build/js/",
-	  css: "./build/css/",
-	  img: "./build/img/",
-	  lib: "./build/lib/",
-	  fonts: "./build/fonts/",
-  
-	},
-	src: {
-	  html: "resources/src/*.html",
-	  js: ["resources/src/js/main.js", "resources/src/blocks/**/*.js"],
-	  less: [ 'resources/src/blocks/*', 'resources/src/blocks/**/*.less', 'resources/src/less/*.less'],
-	  style: "resources/scss/main.scss",
-	  img: "resources/src/img/**/*.*",
-	  lib: "resources/src/lib/**/*.*",
-	  fonts: "resources/src/fonts/**/*.*",
-	  templates: 'resources/src/templates/*.jade'
-	},
-	watch: {
-	  part: "resources/src/template/*.html",
-	  html: "resources/src/**/*.html",
-	  js: "resources/src/js/**/*.js",
-	  css: "resources/scss/**/*.scss",
-	  img: "resources/src/img/**/*.*",
-	  lib: "resources/src/lib/**/*.*",
-	  fonts: "resources/srs/fonts/**/*.*",
-	  templates: 'resources/src/templates/*.jade'
-	},
-	clean: "./build/*",
-  };
+  build: {
+    html: "./build/",
+    js: "./build/js/",
+    css: "./build/css/",
+    img: "./build/img/",
+    lib: "./build/lib/",
+    fonts: "./build/fonts/",
+  },
+  src: {
+    html: "resources/src/*.html",
+    js: ["resources/src/js/main.js", "resources/src/blocks/**/*.js"],
+    less: [
+      "resources/src/blocks/*",
+      "resources/src/blocks/**/*.less",
+      "resources/src/less/*.less",
+    ],
+    style: "resources/scss/main.scss",
+    img: "resources/src/img/**/*.*",
+    lib: "resources/src/lib/**/*.*",
+    fonts: "resources/src/fonts/**/*.*",
+    templates: "resources/src/templates/*.jade",
+  },
+  watch: {
+    part: "resources/src/template/*.html",
+    html: "resources/src/**/*.html",
+    js: "resources/src/js/**/*.js",
+    css: "resources/scss/**/*.scss",
+    img: "resources/src/img/**/*.*",
+    lib: "resources/src/lib/**/*.*",
+    fonts: "resources/srs/fonts/**/*.*",
+    templates: "resources/src/templates/*.jade",
+  },
+  clean: "./build/*",
+};
 var postcss = require("gulp-postcss");
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
-const browsersync = require("browser-sync") // server for work and automatic page updates
+const browsersync = require("browser-sync"); // server for work and automatic page updates
 const plumber = require("gulp-plumber"); // bug tracking module
 //rigger = require("gulp-rigger"), // a module to import the contents of one file into another
 const concat = require("gulp-concat");
@@ -58,7 +61,7 @@ const gulpIf = require("gulp-if");
 const htmlmin = require("gulp-htmlmin");
 const isProd = process.env.NODE_ENV === "prod";
 const fs = require("fs");
-const browserSync = require("browser-sync").create( );
+const browserSync = require("browser-sync").create();
 const reload = browserSync.reload;
 // Browser definitions for autoprefixer
 var AUTOPREFIXER_BROWSERS = [
@@ -85,7 +88,7 @@ var serverConfig = {
     baseDir: "./build",
   },
   notify: false,
-  open:false
+  open: false,
 };
 
 const htmlFile = ["resources/src/*.html"];
@@ -112,7 +115,7 @@ gulp.task(
         .on("error", log)
         //.pipe(sourcemaps.init())
         .pipe(concat("custom.css"))
-       /* .pipe(
+        /* .pipe(
           autoprefixer({
             browsers: AUTOPREFIXER_BROWSERS,
             cascade: false,
@@ -131,15 +134,6 @@ gulp.task(
     );
   })
 );
-// start the server
-gulp.task("webserver", function () {
-  /*browsersync.init({
-    // ... other options
-    open: false
-});
-  browsersync(serverConfig);
-  */
-});
 
 //build partial html files
 gulp.task("part:build", function () {
@@ -169,7 +163,7 @@ gulp.task("html:build", function () {
       .pipe(plumber()) // error tracking
       //.pipe(rigger()) // attachment import
       .pipe(gulp.dest(paths.build.html)) // uploading ready files
-      .pipe(webserver.reload({ stream: true }))
+      //.pipe(webserver.reload({ stream: true }))
   ); // server reboot
 });
 
@@ -178,7 +172,6 @@ gulp.task("css:build", function () {
   return (
     gulp
       .src(paths.src.style) // get main.scss
-
       .pipe(sourcemaps.init()) // initialize sourcemap
       .pipe(sass()) // scss -> css
       // .pipe(autoprefixer()) // add prefix
@@ -205,14 +198,12 @@ gulp.task("js:build", function () {
       .pipe(sourcemaps.write("./")) //  write sourcemap
       .pipe(gulp.dest(paths.build.js)) // put ready file
       .pipe(browsersync.reload({ stream: true }))
-  ); // server restart
+  ); 
 });
 
 // move fonts
 gulp.task("fonts:build", function () {
-  return gulp
-    .src(paths.src.fonts)
-    .pipe(gulp.dest(paths.build.fonts));
+  return gulp.src(paths.src.fonts).pipe(gulp.dest(paths.build.fonts));
 });
 
 // move fonts
@@ -242,16 +233,13 @@ gulp.task("image:build", function () {
 });
 
 // remove catalog build
-gulp.task("clean:build", function () {
-  return  del(["./build/*"]);
-  //del(paths.clean);
+/*gulp.task("clean:build", function () {
+  return del(["./build/*"]);
 });
 gulp.task("clean:templates", function (cb) {
   return del(["build/*.html"], cb);
 });
-/**
- * Compile jade files into HTML ['clean:templates']
- */
+*/
 gulp.task("templates:build", function () {
   var YOUR_LOCALS = JSON.parse(
     fs.readFileSync("./template_locals.json", "utf8")
@@ -267,10 +255,13 @@ gulp.task("templates:build", function () {
     .on("error", log)
     .pipe(gulp.dest("./build/"));
 });
+/*
 // clear cache
 gulp.task("cache:clear", function () {
   cache.clearAll();
 });
+
+/*
 gulp.task("jade-watch", gulp.series("templates:build", reloadCb));
 // assembly
 gulp.task(
@@ -280,29 +271,20 @@ gulp.task(
     gulp.parallel(
       "templates:build",
       "part:build",
-      // "html:build",
       "less",
       "css:build",
       "js:build",
-      // "scripts",
       "fonts:build",
       "lib:build",
       "image:build"
     )
   )
 );
-
-// launching tasks when files change
-gulp.task("watch", function () {
-  /*browserSync.init({server: './build', open: false}, function (err, server) {
-    var url = server.options.get('urls').get('local');  
-    gulp.src('./build/*.html')
-        .pipe(open(url + '/<%=file.paths.replace(file.base,"")%>', {app: 'chrome'}));
-  });*/
+*/
+gulp.task("serve", function () {
   browsersync.init({
-    // ... other options
-    open: false
-});
+    server: "./build",
+  });
   gulp.watch(paths.watch.part, gulp.series("part:build"));
   gulp.watch(paths.watch.html, gulp.series("html:build"));
   gulp.watch(paths.watch.css, gulp.series("css:build"));
@@ -319,20 +301,11 @@ gulp.task("watch", function () {
       "./template_locals.json",
     ],
     gulp.series("templates:build")
-  );
-  //gulp.watch(paths.src.templates, 'resources/src/templates/**/*.jade', './template_locals.json'], ['jade-watch']);
+  );  
 });
 
-// default tasks
-gulp.task("default", gulp.series("build", gulp.parallel("webserver", "watch")));
 
-//});
-
-/**
- *
- * COMMON
- *
- */
+gulp.task("default", gulp.series("js:build", gulp.parallel("serve")));
 
 function log(error) {
   console.log(
@@ -348,18 +321,3 @@ function log(error) {
 
   this.emit("end");
 }
-
-/* tasks */
-/*gulp.task( 'browserSync', callback => {
-	browserSync.init( config.sync.server );
-	callback();
-});*/
-
-// concat all custom js
-/*
-gulp.task( 'scripts', () => {
-	return gulp.src( scripts.scripts )
-			   .pipe( concat( 'starter.js' ) )
-			   .pipe( gulp.dest( paths.scripts ) );
-});
-*/
