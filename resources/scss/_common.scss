@@ -1,8 +1,13 @@
 
 body{
     height: 100dvh;
+    background-color: $bs-body-bg;
 }
-
+body {
+    --bs-body-font-family: var(--bs-font-sanserif);
+    --bs-body-line-height: 1.4;
+    --bs-body-bg: var(--bs-gray-100);
+  }
 :root {
     --bc-h1-font-size: #{$h1-font-size};
     --bc-h2-font-size: #{$h2-font-size};

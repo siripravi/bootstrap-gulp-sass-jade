@@ -9,7 +9,7 @@ const paths = {
     fonts: "./build/fonts/",
   },
   src: {
-    html: "resources/src/*.html",
+    html: "resources/src/**/*.html",
     js: ["resources/src/js/main.js", "resources/src/blocks/**/*.js"],
     less: [
       "resources/src/blocks/*",
@@ -55,7 +55,7 @@ const rename = require("gulp-rename");
 const jade = require("gulp-jade");
 
 const config = require("./resources/config.js");
-console.log(config.paths);
+
 const htmlPartial = require("gulp-html-partial");
 const gulpIf = require("gulp-if");
 const htmlmin = require("gulp-htmlmin");
@@ -99,6 +99,7 @@ function del() {
 /* include gulp and plugins */
 
 gulp.task("clean:css:my", function (cb) {
+  //cache.clearAll();
   return del(["build/css/custom*.css"], cb);
 });
 
@@ -136,7 +137,7 @@ gulp.task(
 );
 
 //build partial html files
-gulp.task("part:build", function () {
+/*gulp.task("part:build", function () {
   return gulp
     .src(htmlFile)
     .pipe(
@@ -153,10 +154,10 @@ gulp.task("part:build", function () {
       )
     )
     .pipe(gulp.dest("./build/"));
-});
+});*/
 
 // compile html
-gulp.task("html:build", function () {
+gulp.task("html:build:old", function () {
   return (
     gulp
       .src(paths.src.html) // selection of all html files in the specified path
@@ -233,13 +234,14 @@ gulp.task("image:build", function () {
 });
 
 // remove catalog build
-/*gulp.task("clean:build", function () {
+gulp.task("clean:build", function () {
   return del(["./build/*"]);
 });
 gulp.task("clean:templates", function (cb) {
-  return del(["build/*.html"], cb);
+ // return del(["build/*.html"], cb);
 });
-*/
+
+/*
 gulp.task("templates:build", function () {
   var YOUR_LOCALS = JSON.parse(
     fs.readFileSync("./template_locals.json", "utf8")
@@ -255,22 +257,30 @@ gulp.task("templates:build", function () {
     .on("error", log)
     .pipe(gulp.dest("./build/"));
 });
-/*
+*/
+gulp.task("html:build", function () {
+  gulp.src([paths.src.html])
+      .pipe(htmlPartial({
+          basePath: 'resources/src/partials/'
+      }))
+      .pipe(gulp.dest(paths.build.html));
+});
 // clear cache
 gulp.task("cache:clear", function () {
   cache.clearAll();
 });
 
-/*
-gulp.task("jade-watch", gulp.series("templates:build", reloadCb));
+//gulp.task("html:build", gulp.parallel("html", ()=>browserSync.reload()));
 // assembly
 gulp.task(
   "build",
   gulp.series(
     "clean:build",
     gulp.parallel(
-      "templates:build",
-      "part:build",
+      "js:build",
+      "html:build",
+     // "templates:build",
+      //"part:build",
       "less",
       "css:build",
       "js:build",
@@ -280,32 +290,25 @@ gulp.task(
     )
   )
 );
-*/
+
 gulp.task("serve", function () {
-  browsersync.init({
+  /*browsersync.init({
     server: "./build",
-  });
-  gulp.watch(paths.watch.part, gulp.series("part:build"));
-  gulp.watch(paths.watch.html, gulp.series("html:build"));
-  gulp.watch(paths.watch.css, gulp.series("css:build"));
-  gulp.watch(paths.watch.js, gulp.series("js:build"));
-  //gulp.watch( paths.scripts + 'modules/**/*.js', gulp.series( 'scripts' ) );
-  gulp.watch(paths.watch.img, gulp.series("image:build"));
-  gulp.watch(paths.watch.fonts, gulp.series("fonts:build"));
-  gulp.watch(paths.watch.lib, gulp.series("lib:build"));
+  });*/
+  gulp.watch(paths.watch.html, gulp.parallel("html:build"));
+  //gulp.watch(paths.watch.html, ["html:build"));
+  gulp.watch(paths.watch.css, gulp.parallel("css:build"));
+  gulp.watch(paths.watch.js, gulp.parallel("js:build"));
+  //gulp.watch( paths.scripts + 'modules/**/*.js', [ 'scripts' ) );
+  gulp.watch(paths.watch.img, gulp.parallel("image:build"));
+  gulp.watch(paths.watch.fonts, gulp.parallel("fonts:build"));
+  gulp.watch(paths.watch.lib, gulp.parallel("lib:build"));
   //gulp.watch(paths.src.scripts.concat('src/blocks/*'), {cwd: '.'}, ['js']);
-  gulp.watch(
-    [
-      paths.watch.templates,
-      "resources/src/templates/**/*.jade",
-      "./template_locals.json",
-    ],
-    gulp.series("templates:build")
-  );  
+  
 });
 
 
-gulp.task("default", gulp.series("js:build", gulp.parallel("serve")));
+gulp.task("default", gulp.parallel("build","serve"));
 
 function log(error) {
   console.log(
@@ -320,4 +323,5 @@ function log(error) {
   );
 
   this.emit("end");
+
 }
