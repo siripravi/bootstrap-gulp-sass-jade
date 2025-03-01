@@ -259,7 +259,7 @@ gulp.task("templates:build", function () {
 });
 */
 gulp.task("html:build", function () {
-  gulp.src([paths.src.html])
+  return gulp.src([paths.src.html])
       .pipe(htmlPartial({
           basePath: 'resources/src/partials/'
       }))
@@ -292,9 +292,9 @@ gulp.task(
 );
 
 gulp.task("serve", function () {
-  /*browsersync.init({
+  browsersync.init({
     server: "./build",
-  });*/
+  });
   gulp.watch(paths.watch.html, gulp.parallel("html:build"));
   //gulp.watch(paths.watch.html, ["html:build"));
   gulp.watch(paths.watch.css, gulp.parallel("css:build"));
