@@ -225,8 +225,8 @@ gulp.task("image:build", function () {
             max: 90,
             min: 80,
           }),
-          pngquant(),
-          imagemin.svgo({ plugins: [{ removeViewBox: false }] }),
+     //     pngquant(),
+     //     imagemin.svgo({ plugins: [{ removeViewBox: false }] }),
         ])
       )
     )
