@@ -214,7 +214,7 @@ gulp.task("lib:build", function () {
 // image processing
 gulp.task("image:build", function () {
   return gulp
-    .src(paths.src.img) // path to image source
+    .src(paths.src.img,{encoding:false}) // path to image source
   /*  .pipe(
       cache(
         imagemin([
