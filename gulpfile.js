@@ -27,7 +27,7 @@ const paths = {
     html: "resources/src/**/*.html",
     js: "resources/src/js/**/*.js",
     css: "resources/scss/**/*.scss",
-    img: "resources/src/img/**/*.*",
+ //   img: "resources/src/img/**/*.*",
     lib: "resources/src/lib/**/*.*",
     fonts: "resources/srs/fonts/**/*.*",
     templates: "resources/src/templates/*.jade",
@@ -300,7 +300,7 @@ gulp.task("serve", function () {
   gulp.watch(paths.watch.css, gulp.parallel("css:build"));
   gulp.watch(paths.watch.js, gulp.parallel("js:build"));
   //gulp.watch( paths.scripts + 'modules/**/*.js', [ 'scripts' ) );
-  gulp.watch(paths.watch.img, gulp.parallel("image:build"));
+  //gulp.watch(paths.watch.img, gulp.parallel("image:build"));
   gulp.watch(paths.watch.fonts, gulp.parallel("fonts:build"));
   gulp.watch(paths.watch.lib, gulp.parallel("lib:build"));
   //gulp.watch(paths.src.scripts.concat('src/blocks/*'), {cwd: '.'}, ['js']);
