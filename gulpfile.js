@@ -215,7 +215,7 @@ gulp.task("lib:build", function () {
 gulp.task("image:build", function () {
   return gulp
     .src(paths.src.img) // path to image source
-    .pipe(
+  /*  .pipe(
       cache(
         imagemin([
           // image compression
@@ -229,7 +229,7 @@ gulp.task("image:build", function () {
      //     imagemin.svgo({ plugins: [{ removeViewBox: false }] }),
         ])
       )
-    )
+    )*/
     .pipe(gulp.dest(paths.build.img)); // output ready files
 });
 
