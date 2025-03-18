@@ -1,12 +1,12 @@
 "use strict";
 const paths = {
-  build: {
-    html: "./build/",
-    js: "./build/js/",
-    css: "./build/css/",
-    img: "./build/img/",
-    lib: "./build/lib/",
-    fonts: "./build/fonts/",
+  dist: {
+    html: "./dist/",
+    js: "./dist/js/",
+    css: "./dist/css/",
+    img: "./dist/img/",
+    lib: "./dist/lib/",
+    fonts: "./dist/fonts/",
   },
   src: {
     html: "resources/src/**/*.html",
@@ -32,7 +32,7 @@ const paths = {
     fonts: "resources/srs/fonts/**/*.*",
     templates: "resources/src/templates/*.jade",
   },
-  clean: "./build/*",
+  clean: "./dist/*",
 };
 var postcss = require("gulp-postcss");
 const gulp = require("gulp");
@@ -85,7 +85,7 @@ const config  = require( './resources/config.js' ),
 /* настройки сервера */
 var serverConfig = {
   server: {
-    baseDir: "./build",
+    baseDir: "./dist",
   },
   notify: false,
   open: false,
@@ -94,13 +94,13 @@ var serverConfig = {
 const htmlFile = ["resources/src/*.html"];
 /*
 function del() {
-  return gulp.src("./build/*", { read: false }).pipe(clean());
+  return gulp.src("./dist/*", { read: false }).pipe(clean());
 }*/
 /* include gulp and plugins */
 
 gulp.task("clean:css:my", function (cb) {
   //cache.clearAll();
-  return del(["build/css/custom*.css"], cb);
+  return del(["dist/css/custom*.css"], cb);
 });
 
 gulp.task(
@@ -130,14 +130,14 @@ gulp.task(
         )
         .pipe(rename({ suffix: ".min" }))
         //.pipe(sourcemaps.write())
-        .pipe(gulp.dest("./build/css"))
+        .pipe(gulp.dest("./dist/css"))
         .pipe(reload({ stream: true }))
     );
   })
 );
 
-//build partial html files
-/*gulp.task("part:build", function () {
+//dist partial html files
+/*gulp.task("part:dist", function () {
   return gulp
     .src(htmlFile)
     .pipe(
@@ -153,66 +153,66 @@ gulp.task(
         })
       )
     )
-    .pipe(gulp.dest("./build/"));
+    .pipe(gulp.dest("./dist/"));
 });*/
 
 // compile html
-gulp.task("html:build:old", function () {
+gulp.task("html:dist:old", function () {
   return (
     gulp
       .src(paths.src.html) // selection of all html files in the specified path
       .pipe(plumber()) // error tracking
       //.pipe(rigger()) // attachment import
-      .pipe(gulp.dest(paths.build.html)) // uploading ready files
+      .pipe(gulp.dest(paths.dist.html)) // uploading ready files
       //.pipe(webserver.reload({ stream: true }))
   ); // server reboot
 });
 
 // compile styles
-gulp.task("css:build", function () {
+gulp.task("css:dist", function () {
   return (
     gulp
       .src(paths.src.style) // get main.scss
       .pipe(sourcemaps.init()) // initialize sourcemap
       .pipe(sass()) // scss -> css
       // .pipe(autoprefixer()) // add prefix
-      .pipe(gulp.dest(paths.build.css))
+      .pipe(gulp.dest(paths.dist.css))
       .pipe(rename({ suffix: ".min" }))
       .pipe(cleanCSS()) // minimize CSS
       //.pipe(postcss([autoprefixer()]))
       .pipe(sourcemaps.write("./")) // write sourcemap
-      .pipe(gulp.dest(paths.build.css)) // output to build
+      .pipe(gulp.dest(paths.dist.css)) // output to dist
       .pipe(browsersync.reload({ stream: true }))
   ); // server restart
 });
 // compile js
-gulp.task("js:build", function () {
+gulp.task("js:dist", function () {
   return (
     gulp
       .src(paths.src.js) // get file main.js
       .pipe(plumber()) // for bug tracking
       //  .pipe(rigger()) // import all files to main.js
-      .pipe(gulp.dest(paths.build.js))
+      .pipe(gulp.dest(paths.dist.js))
       .pipe(rename({ suffix: ".min" }))
       .pipe(sourcemaps.init()) //initialize sourcemap
       .pipe(uglify()) // minimize js
       .pipe(sourcemaps.write("./")) //  write sourcemap
-      .pipe(gulp.dest(paths.build.js)) // put ready file
+      .pipe(gulp.dest(paths.dist.js)) // put ready file
       .pipe(browsersync.reload({ stream: true }))
   ); 
 });
 
 // move fonts
-gulp.task("fonts:build", function () {
-  return gulp.src(paths.src.fonts).pipe(gulp.dest(paths.build.fonts));
+gulp.task("fonts:dist", function () {
+  return gulp.src(paths.src.fonts).pipe(gulp.dest(paths.dist.fonts));
 });
 
 // move fonts
-gulp.task("lib:build", function () {
-  return gulp.src(paths.src.lib).pipe(gulp.dest(paths.build.lib));
+gulp.task("lib:dist", function () {
+  return gulp.src(paths.src.lib).pipe(gulp.dest(paths.dist.lib));
 });
 // image processing
-gulp.task("image:build", function () {
+gulp.task("image:dist", function () {
   return gulp
     .src(paths.src.img,{encoding:false}) // path to image source
   /*  .pipe(
@@ -230,19 +230,19 @@ gulp.task("image:build", function () {
         ])
       )
     )*/
-    .pipe(gulp.dest(paths.build.img)); // output ready files
+    .pipe(gulp.dest(paths.dist.img)); // output ready files
 });
 
-// remove catalog build
-gulp.task("clean:build", function () {
-  return del(["./build/*"]);
+// remove catalog dist
+gulp.task("clean:dist", function () {
+  return del(["./dist/*"]);
 });
 gulp.task("clean:templates", function (cb) {
- // return del(["build/*.html"], cb);
+ // return del(["dist/*.html"], cb);
 });
 
 /*
-gulp.task("templates:build", function () {
+gulp.task("templates:dist", function () {
   var YOUR_LOCALS = JSON.parse(
     fs.readFileSync("./template_locals.json", "utf8")
   );
@@ -255,60 +255,60 @@ gulp.task("templates:build", function () {
       })
     )
     .on("error", log)
-    .pipe(gulp.dest("./build/"));
+    .pipe(gulp.dest("./dist/"));
 });
 */
-gulp.task("html:build", function () {
+gulp.task("html:dist", function () {
   return gulp.src([paths.src.html])
       .pipe(htmlPartial({
           basePath: 'resources/src/partials/'
       }))
-      .pipe(gulp.dest(paths.build.html));
+      .pipe(gulp.dest(paths.dist.html));
 });
 // clear cache
 gulp.task("cache:clear", function () {
   cache.clearAll();
 });
 
-//gulp.task("html:build", gulp.parallel("html", ()=>browserSync.reload()));
+//gulp.task("html:dist", gulp.parallel("html", ()=>browserSync.reload()));
 // assembly
 gulp.task(
-  "build",
+  "dist",
   gulp.series(
-    "clean:build",
+    "clean:dist",
     gulp.parallel(
-      "js:build",
-      "html:build",
-     // "templates:build",
-      //"part:build",
+      "js:dist",
+      "html:dist",
+     // "templates:dist",
+      //"part:dist",
       "less",
-      "css:build",
-      "js:build",
-      "fonts:build",
-      "lib:build",
-      "image:build"
+      "css:dist",
+      "js:dist",
+      "fonts:dist",
+      "lib:dist",
+      "image:dist"
     )
   )
 );
 
 gulp.task("serve", function () {
   browsersync.init({
-    server: "./build",
+    server: "./dist",
   });
-  gulp.watch(paths.watch.html, gulp.parallel("html:build"));
-  //gulp.watch(paths.watch.html, ["html:build"));
-  gulp.watch(paths.watch.css, gulp.parallel("css:build"));
-  gulp.watch(paths.watch.js, gulp.parallel("js:build"));
+  gulp.watch(paths.watch.html, gulp.parallel("html:dist"));
+  //gulp.watch(paths.watch.html, ["html:dist"));
+  gulp.watch(paths.watch.css, gulp.parallel("css:dist"));
+  gulp.watch(paths.watch.js, gulp.parallel("js:dist"));
   //gulp.watch( paths.scripts + 'modules/**/*.js', [ 'scripts' ) );
-  //gulp.watch(paths.watch.img, gulp.parallel("image:build"));
-  gulp.watch(paths.watch.fonts, gulp.parallel("fonts:build"));
-  gulp.watch(paths.watch.lib, gulp.parallel("lib:build"));
+  //gulp.watch(paths.watch.img, gulp.parallel("image:dist"));
+  gulp.watch(paths.watch.fonts, gulp.parallel("fonts:dist"));
+  gulp.watch(paths.watch.lib, gulp.parallel("lib:dist"));
   //gulp.watch(paths.src.scripts.concat('src/blocks/*'), {cwd: '.'}, ['js']);
   
 });
 
 
-gulp.task("default", gulp.parallel("build","serve"));
+gulp.task("default", gulp.parallel("dist","serve"));
 
 function log(error) {
   console.log(
