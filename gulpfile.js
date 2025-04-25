@@ -308,7 +308,7 @@ gulp.task("serve", function () {
 });
 
 
-gulp.task("default", gulp.parallel("dist","serve"));
+gulp.task("default", gulp.parallel("dist"));//,"serve"));
 
 function log(error) {
   console.log(
