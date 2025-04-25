@@ -13,7 +13,7 @@
     "css-dev": "cross-env NODE_ENV=development postcss resources/scss/main.css -o web/assets/inertia/css/app.css",
     "css-prod": "cross-env NODE_ENV=development postcss resources/css/app.css -o web/assets/inertia/css/app.min.css",
     "start": "gulp",
-    "build": "gulp build --production"
+    "build": "gulp default --production"
   },
   "repository": {
     "type": "git",
