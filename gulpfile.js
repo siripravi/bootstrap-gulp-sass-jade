@@ -292,9 +292,9 @@ gulp.task(
 );
 
 gulp.task("serve", function () {
-  browsersync.init({
+ /* browsersync.init({
     server: "./dist",
-  });
+  });*/
   gulp.watch(paths.watch.html, gulp.parallel("html:dist"));
   //gulp.watch(paths.watch.html, ["html:dist"));
   gulp.watch(paths.watch.css, gulp.parallel("css:dist"));
@@ -308,7 +308,7 @@ gulp.task("serve", function () {
 });
 
 
-gulp.task("default", gulp.parallel("dist"));//,"serve"));
+gulp.task("default", gulp.parallel("dist","serve"));
 
 function log(error) {
   console.log(
