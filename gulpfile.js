@@ -1,12 +1,12 @@
 "use strict";
 const paths = {
   dist: {
-    html: "./dist/",
-    js: "./dist/js/",
-    css: "./dist/css/",
-    img: "./dist/img/",
-    lib: "./dist/lib/",
-    fonts: "./dist/fonts/",
+    html: "./build/",
+    js: "./build/js/",
+    css: "./build/css/",
+    img: "./build/img/",
+    lib: "./build/lib/",
+    fonts: "./build/fonts/",
   },
   src: {
     html: "resources/src/**/*.html",
