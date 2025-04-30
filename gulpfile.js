@@ -22,14 +22,13 @@ const paths = {
     fonts: "resources/src/fonts/**/*.*",
     templates: "resources/src/templates/*.jade",
   },
+  
   watch: {
-    part: "resources/src/template/*.html",
     html: "resources/src/**/*.html",
     js: "resources/src/js/**/*.js",
     css: "resources/scss/**/*.scss",
- //   img: "resources/src/img/**/*.*",
     lib: "resources/src/lib/**/*.*",
-    fonts: "resources/srs/fonts/**/*.*",
+    fonts: "resources/src/fonts/**/*.*",
     templates: "resources/src/templates/*.jade",
   },
   clean: "./dist/*",
@@ -116,6 +115,7 @@ gulp.task(
         .on("error", log)
         //.pipe(sourcemaps.init())
         .pipe(concat("custom.css"))
+   //     .pipe(autoprefixer({ overrideBrowserslist: AUTOPREFIXER_BROWSERS }))
         /* .pipe(
           autoprefixer({
             browsers: AUTOPREFIXER_BROWSERS,
@@ -260,10 +260,9 @@ gulp.task("templates:dist", function () {
 */
 gulp.task("html:dist", function () {
   return gulp.src([paths.src.html])
-      .pipe(htmlPartial({
-          basePath: 'resources/src/partials/'
-      }))
-      .pipe(gulp.dest(paths.dist.html));
+      .pipe(htmlPartial({ basePath: 'resources/src/partials/' }))
+      .pipe(gulp.dest(paths.dist.html))
+      .pipe(browserSync.stream());
 });
 // clear cache
 gulp.task("cache:clear", function () {
@@ -282,8 +281,7 @@ gulp.task(
      // "templates:dist",
       //"part:dist",
       "less",
-      "css:dist",
-      "js:dist",
+      "css:dist",     
       "fonts:dist",
       "lib:dist",
       "image:dist"
@@ -292,6 +290,7 @@ gulp.task(
 );
 
 gulp.task("serve", function () {
+  browserSync.init(serverConfig);
  /* browsersync.init({
     server: "./dist",
   });*/
@@ -308,7 +307,7 @@ gulp.task("serve", function () {
 });
 
 
-gulp.task("default", gulp.parallel("dist","serve"));
+gulp.task("default", gulp.parallel("dist"));
 
 function log(error) {
   console.log(
