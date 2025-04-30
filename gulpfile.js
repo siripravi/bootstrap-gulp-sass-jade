@@ -31,7 +31,7 @@ const paths = {
     fonts: "resources/src/fonts/**/*.*",
     templates: "resources/src/templates/*.jade",
   },
-  clean: "./dist/*",
+  clean: "./build/*",
 };
 var postcss = require("gulp-postcss");
 const gulp = require("gulp");
@@ -84,7 +84,7 @@ const config  = require( './resources/config.js' ),
 /* настройки сервера */
 var serverConfig = {
   server: {
-    baseDir: "./dist",
+    baseDir: "./build",
   },
   notify: false,
   open: false,
@@ -93,7 +93,7 @@ var serverConfig = {
 const htmlFile = ["resources/src/*.html"];
 /*
 function del() {
-  return gulp.src("./dist/*", { read: false }).pipe(clean());
+  return gulp.src("./build/*", { read: false }).pipe(clean());
 }*/
 /* include gulp and plugins */
 
@@ -130,7 +130,7 @@ gulp.task(
         )
         .pipe(rename({ suffix: ".min" }))
         //.pipe(sourcemaps.write())
-        .pipe(gulp.dest("./dist/css"))
+        .pipe(gulp.dest("./build/css"))
         .pipe(reload({ stream: true }))
     );
   })
@@ -153,7 +153,7 @@ gulp.task(
         })
       )
     )
-    .pipe(gulp.dest("./dist/"));
+    .pipe(gulp.dest("./build/"));
 });*/
 
 // compile html
@@ -235,7 +235,7 @@ gulp.task("image:dist", function () {
 
 // remove catalog dist
 gulp.task("clean:dist", function () {
-  return del(["./dist/*"]);
+  return del(["./build/*"]);
 });
 gulp.task("clean:templates", function (cb) {
  // return del(["dist/*.html"], cb);
@@ -255,7 +255,7 @@ gulp.task("templates:dist", function () {
       })
     )
     .on("error", log)
-    .pipe(gulp.dest("./dist/"));
+    .pipe(gulp.dest("./build/"));
 });
 */
 gulp.task("html:dist", function () {
@@ -292,7 +292,7 @@ gulp.task(
 gulp.task("serve", function () {
   browserSync.init(serverConfig);
  /* browsersync.init({
-    server: "./dist",
+    server: "./build",
   });*/
   gulp.watch(paths.watch.html, gulp.parallel("html:dist"));
   //gulp.watch(paths.watch.html, ["html:dist"));
